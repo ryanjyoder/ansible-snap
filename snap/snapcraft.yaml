@@ -26,14 +26,17 @@ parts:
     source: https://github.com/ansible/ansible.git
     source-branch: devel
     stage-packages: [git, ssh-client]
+    build-packages: [build-essential, libssl-dev, python-dev, libffi-dev]
+
   snapcraft-preload:
     source: https://github.com/diddlesnaps/snapcraft-preload.git
     source-branch: semaphore-support
     plugin: cmake
     stage-packages:
-      - lib32gcc1
-      - lib32stdc++6
-      - libc6-i386
+      - try:
+        - lib32gcc1
+        - lib32stdc++6
+        - libc6-i386
     build-packages:
       - gcc-multilib
       - g++-multilib
