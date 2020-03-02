@@ -1,19 +1,18 @@
-name: ansible-ryanjyoder # you probably want to 'snapcraft register <name>'
-base: core18 # the base snap is the execution environment for this snap
-version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
-summary: Single-line elevator pitch for your amazing snap # 79 char long summary
+name: ansible
+base: core18 
+version: '2.10.0.dev0' # just for humans, typically '1.2+git' or '1.3.2'
+summary: Ansible is Simple IT Automation
 description: |
-  This is my-snap's description. You have a paragraph or two to tell the
-  most important story about your snap. Keep it under 100 words though,
-  we live in tweetspace and your description wants to look good in the snap
-  store.
+  Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy. Avoid writing scripts or custom code to deploy and update your applications — automate in a language that approaches plain English, using SSH, with no agents to install on remote systems.
 
-grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+  Warning: This snap currently only contains ansible-playbook and is very much experimental.
+
+grade: stable 
+confinement: strict
 
 apps:
-#ansible             ansible-doc         ansible-pull ansible-config      ansible-galaxy      ansible-test ansible-connection  ansible-inventory   ansible-vault ansible-console     ansible-playbook  ansible-pull
-  ansible-playbook:
+# TODO: missing commands: ansible ansible-doc ansible-pull ansible-config ansible-galaxy ansible-test ansible-connection  ansible-inventory   ansible-vault ansible-console     ansible-playbook  ansible-pull
+  playbook:
     command: bin/snapcraft-preload $SNAP/usr/bin/python3 $SNAP/bin/ansible-playbook
     environment:
       ANSIBLE_CONFIG: $SNAP_USER_DATA/ansible.cfg
